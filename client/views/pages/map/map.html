@@ -1,0 +1,85 @@
+
+
+<template name="map">
+
+    <!-- Page heading -->
+    {{> pageHeading}}
+
+    <div id="map" class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>{{translate 'fill_the_fields'}}</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <form role="form" class="form-inline">
+                            <div class="form-group">
+                                <label for="zip_code" >{{translate 'zip_code'}}</label>&nbsp;
+                                <input type="text" placeholder="Code postal" id="zip_code" value="4000" class="form-control">&nbsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="radius" >{{translate 'area_zone'}}</label>&nbsp;
+                                <div class="btn-group">
+                                    <button class="btn btn-white" id="zoomIn" type="button">{{translate 'zoom_in'}}</button>
+                                    <button class="btn btn-white" id="zoomOut" type="button">{{translate 'zoom_out'}}</button>
+                                </div>
+                                <input type="number" min="0" step="1000" placeholder="Radius" value="5000" id="radius" class="form-control hidden">&nbsp;
+                            </div>
+                            <button class="btn btn-primary pull-right" id="search_zipcode" type="submit" data-loading-text="{{translate 'loading'}}">{{translate 'search'}}</button> 
+                        </form>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div id="google-map" style="width: 100%; height: 400px;"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <table class="footable table table-stripped toggle-arrow-tiny"  data-page-size="6">
+                                    <thead>
+                                    <tr>
+                                        <th data-toggle="true">{{translate 'city'}}</th>
+                                        <th>{{translate 'zip_code'}}</th>
+                                        <th class="text-center" data-sort-ignore="true">{{translate 'actions'}}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each list_cities_in_area}}
+                                        <tr data-key="{{key}}" data-id="{{_id}}">
+                                            <td>
+                                                {{city}}
+                                            </td>
+                                            <td class="text-center">
+                                                {{zip}}
+                                            </td>
+                                             <td class="text-center">
+                                                <a title="Supprimer cette ville" href="#" data-zip={{zip}} class="btn btn-danger btn-circle delete-city" ><i class="fa fa-times"></i></a>
+                                            </td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="6">
+                                            <ul class="pagination pull-right"></ul>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <button class="btn btn-primary pull-right" id="load_zipcodes" type="submit" data-loading-text="{{translate 'loading'}}">{{translate 'load_zip_code'}} <i class="fa fa-check"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+</template>

@@ -1,0 +1,255 @@
+<template name="newsTimeline">
+
+    <!-- Page heading -->
+    {{> pageHeading title='News' }}
+
+    <div class="wrapper wrapper-content">
+        <div class="row animated fadeInRight">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div id="ibox-content">
+
+                        <div id="vertical-timeline" class="light-timeline vertical-container center-orientation">
+                            
+                             <!--<div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon red-bg">
+                                    <i class="fa fa-warning"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_error_title'}}</h2>
+                                    <p>{{translate 'event_error_body'}}</p>
+                                    <span class="vertical-date">
+                                        29/11/2016
+                                    </span>
+                                </div>
+                            </div>  -->
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon blue-bg">
+                                    <i class="fa fa-heart"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_16_title'}}</h2>
+                                    <p>{{translate 'event_16_body'}}</p>
+                                    <span class="vertical-date">
+                                        07/11/2016
+                                    </span>
+                                </div>
+                            </div> 
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon blue-bg">
+                                    <i class="fa fa-heart"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_15_title'}}</h2>
+                                    <p>{{translate 'event_15_body'}}</p>
+                                     <a href="{{pathFor route='favorismanager'}}" class="btn btn-sm btn-info">{{translate 'event_15_button_label'}}</a>
+                                    <span class="vertical-date">
+                                        05/07/2016
+                                    </span>
+                                </div>
+                            </div>
+                             <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon blue-bg">
+                                    <i class="fa fa-search"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_14_title'}}</h2>
+                                    <p>{{translate 'event_14_body'}}</p>
+                                     <a href="{{pathFor route='annonces'}}" class="btn btn-sm btn-info">{{translate 'event_14_button_label'}}</a>
+                                    <span class="vertical-date">
+                                        29/06/2016
+                                    </span>
+                                </div>
+                            </div>
+                              <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon blue-bg">
+                                    <i class="fa fa-heart"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_13_title'}}</h2>
+                                    <p>{{translate 'event_13_body'}}</p>
+                                     <a href="{{pathFor route='favorisrepository'}}" class="btn btn-sm btn-info">{{translate 'event_10_button_label'}}</a>
+                                    <span class="vertical-date">
+                                        04/06/2016
+                                    </span>
+                                </div>
+                            </div>
+                              <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon blue-bg">
+                                    <i class="fa fa-download"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_12_title'}}</h2>
+                                    <p>{{translate 'event_12_body'}}</p>
+                                    <span class="vertical-date">
+                                        04/06/2016
+                                    </span>
+                                </div>
+                            </div>
+
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon blue-bg">
+                                    <i class="fa fa-file-text"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_11_title'}}</h2>
+                                    <p>{{translate 'event_11_body'}}</p>
+                                    <span class="vertical-date">
+                                        18/05/2016
+                                    </span>
+                                </div>
+                            </div>
+
+                             <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon blue-bg">
+                                    <i class="fa fa-download"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_10_title'}}</h2>
+                                    <p>{{translate 'event_10_body'}}</p>
+                                    <a href="{{pathFor route='annonces'}}" class="btn btn-sm btn-info">{{translate 'event_10_button_label'}}</a>
+                                    <span class="vertical-date">
+                                        11/05/2016
+                                    </span>
+                                </div>
+                            </div>
+
+                             <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon blue-bg">
+                                    <i class="fa fa-smile-o"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_9_title'}}</h2>
+                                    <p>{{translate 'event_9_body'}}</p>
+                                    <span class="vertical-date">
+                                        28/04/2016
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon blue-bg">
+                                    <i class="fa fa-map-marker"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_8_title'}}</h2>
+                                    <p>{{translate 'event_8_body'}}</p>
+                                    <a href="{{pathFor route='map'}}" class="btn btn-sm btn-info">{{translate 'event_8_button_label'}}</a>
+                                    <span class="vertical-date">
+                                        22/04/2016
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon blue-bg">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_7_title'}}</h2>
+                                    <p>{{translate 'event_7_body'}}</p>
+                                    <a href="{{pathFor route='calendar'}}" class="btn btn-sm btn-info">{{translate 'event_7_button_label'}}</a>
+                                    <span class="vertical-date">
+                                        05/04/2016
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon navy-bg">
+                                    <i class="fa fa-briefcase"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_6_title'}}</h2>
+                                    <p>{{translate 'event_6_body'}}</p>
+                                    <span class="vertical-date">
+                                        22/02/2016
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon blue-bg">
+                                    <i class="fa fa-file-text"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_5_title'}}</h2>
+                                    <p>{{translate 'event_5_body'}}</p>
+                                    <span class="vertical-date">
+                                        17/02/2016
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon blue-bg">
+                                    <i class="fa fa-at"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_4_title'}}</h2>
+                                    <p>{{translate 'event_4_body'}}</p>
+                                    <a href="{{pathFor route='myfilters'}}" class="btn btn-sm btn-info">{{translate 'event_4_button_label'}}</a>
+                                    <span class="vertical-date">10/02/2016</span>
+                                </div>
+                            </div>
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon blue-bg">
+                                    <i class="fa fa-at"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_3_title'}}</h2>
+                                    <p>{{translate 'event_3_body'}}</p>
+                                    <a href="{{pathFor route='myfilters'}}" class="btn btn-sm btn-info">{{translate 'event_3_button_label'}}</a>
+                                    <span class="vertical-date">05/02/2016</span>
+                                </div>
+                            </div>
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon blue-bg">
+                                    <i class="fa fa-comment"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_2_title'}}</h2>
+                                    <p>{{translate 'event_2_title'}}</p>
+                                    <a href="{{pathFor route='chat'}}" class="btn btn-sm btn-info">{{translate 'event_2_button_label'}}</a>
+                                    <span class="vertical-date">23/01/2016</span>
+                                </div>
+                            </div>
+
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon navy-bg">
+                                    <i class="fa fa-briefcase"></i>
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>{{translate 'event_1_title'}}</h2>
+                                    <p>{{translate 'event_1_body'}}</p>
+                                    <span class="vertical-date">16/01/2016</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

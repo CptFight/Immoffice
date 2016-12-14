@@ -1,0 +1,198 @@
+<template name="landing">
+    <div id="landing">
+        <div class="navbar-wrapper ">
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{{pathFor route='dashboard1'}}">IMMOFFICE</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a class="page-scroll" href="#page-top">{{translate 'connection'}}</a></li>
+                           <!-- <li><a class="page-scroll" href="#features">{{translate 'features'}}</a></li>
+                            <li><a class="page-scroll" href="#pricing">{{translate 'price'}}</a></li>-->
+                            <li><a class="page-scroll" href="#contact">{{translate 'contact'}}</a></li> 
+                            <li>
+                                <br/>
+                                <div class="btn-group ">
+                                    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" aria-expanded="false">{{translate 'lang'}} <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#" class="choose-lang-fr">{{translate 'french'}}</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#" class="choose-lang-nl">{{translate 'dutch'}}</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+
+        
+
+
+        <section id="login" class="gray-section ">
+            <div class="container">
+                {{> login}}
+            </div>
+         
+
+        </section>
+
+       <!--  <section id="features" class="features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="navy-line"></div>
+                        <h1><strong>{{translate 'why_immoffice'}}</strong></h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-5 col-lg-offset-1 features-text">
+                       <h2><strong>{{translate 'in_resum'}}</strong></h2>
+                       <div id="resum" class="read_more">
+                           <p>{{translate 'why_immoffice_resum'}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 features-text">
+                        <h2><strong>{{translate 'fast'}}</strong></h2>
+                        <div class="read_more" id="fast">
+                            <p>{{translate 'why_immoffice_fast'}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-5 col-lg-offset-1 features-text">
+                        <h2><strong>{{translate 'mail_service'}}</strong></h2>
+                        <div class="read_more" id="mail">
+                            <p>{{translate 'why_immoffice_mail_service'}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 features-text">
+                        <h2><strong>{{translate 'efficient'}}</strong></h2>
+                        <div class="read_more" id="efficient">
+                            <p>{{translate 'why_immoffice_efficient'}}</p>
+                        </div>
+
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-lg-5 col-lg-offset-1 features-text">
+                        <h2><strong>{{translate 'portability'}}</strong></h2>
+                        <div class="read_more" id="efficient">
+                            <p>{{translate 'why_immoffice_portability'}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 features-text">
+                        <h2><strong>{{translate 'simple'}}</strong></h2>
+                        <div class="read_more" id="simple">
+                            <p>{{translate 'why_immoffice_simple'}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section id="pricing" class="gray-section">
+            <div class="container">
+                <div class="row m-b-lg">
+                    <div class="col-lg-12 text-center">
+                        <div class="navy-line"></div>
+                        <h1><strong>{{translate 'prices'}}</strong></h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 wow zoomIn">
+                        <ul class="pricing-plan list-unstyled selected">
+                            <li class="pricing-title">
+                                {{translate 'standart'}}
+                            </li>
+                            <li class="pricing-price">
+                                <span>79{{translate 'currency'}}</span> / {{translate 'month'}} <small>({{translate 'htva'}})</small>
+                            </li>
+                            <li>
+                                <strong>1</strong> {{translate 'licence'}}
+                            </li>
+                            
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 wow zoomIn">
+                        <ul class="pricing-plan list-unstyled selected">
+                            <li class="pricing-title">
+                                {{translate 'promotion'}}
+                            </li>
+                            <li class="pricing-price">
+                                <span>59{{translate 'currency'}}</span> / {{translate 'month'}} <small>({{translate 'ttc'}})</small>
+                            </li>
+                            <li>
+                            <strong>1</strong> {{translate 'licence'}}
+                            </li>
+                           
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 wow zoomIn">
+                        <ul class="pricing-plan list-unstyled selected">
+                            <li class="pricing-title">
+                                {{translate 'customized'}}
+                            </li>
+                            <li class="pricing-price">
+                                <span>xx{{translate 'currency'}}</span> / {{translate 'month'}}
+                            </li> 
+                            <li>
+                                {{translate 'contact_sales'}}
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        -->
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="row m-b-lg">
+                    <div class="col-lg-12 text-center">
+                        <div class="navy-line"></div>
+                        <h1><strong>{{translate 'contact_us'}}</strong></h1>
+                    </div>
+                </div>
+                <div class="row m-b-lg">
+                    <div class="col-lg-3 col-lg-offset-3">
+                        <address>
+                            <strong><span class="navy">IMMOffice, Inc.</span></strong><br/>
+                             </address>
+                    </div>
+                    <div class="col-lg-4">
+                        <p class="text-color">
+                            {{translate 'ask_us_customized_offer'}}
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <a href="mailto:gabypirson@gmail.com" class="btn btn-primary">{{translate 'send_email'}}</a>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
+                        <p><strong>&copy; 2016 IMMOffice</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section> 
+    </div>
+
+</template>

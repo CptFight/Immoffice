@@ -1,0 +1,128 @@
+<template name="topNavbar">
+
+     <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a id="navbar-minimalize" class="minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                <!---<form role="search" class="navbar-form-custom" action="search_results">
+                    <div class="form-group">
+                        <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                    </div>
+                </form> -->
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                 
+                <li>
+
+                    <span class="m-r-sm text-muted welcome-message">{{translate 'welkome_immoffice'}}</span>
+                </li>
+
+                <li>
+
+                    <span class="m-r-sm text-muted welcome-message"><a target="_blank" class="text-muted" href="{{translate 'need_help_url'}}"> {{translate 'need_help'}} <i class="fa fa-question"></i></a></span>
+                </li>
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell"></i>  <span class="label label-primary">{{count_messages}}</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                       
+                        {{#each messages}}
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a href="{{pathFor route='profile'}}" class="pull-left">
+                                        <i class="fa fa-chain"></i>
+                                    </a>
+                                    <div class="media-body ">
+                                        <small class="pull-right text-navy"></small>
+                                        <strong><a class="notification" href="{{link}}">{{message}}</a></strong>. <br>
+                                        <small class="text-muted">{{dateString}}</small>
+                                    </div>
+                                </div>
+                            </li>
+
+                           
+                        <li class="divider"></li>
+                        {{/each}}
+                          <li>
+                            <div class="text-center">
+                                <a href="#" id="clear-messages">
+                                    <strong>{{translate 'delete_notification'}}</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
+                       
+                        <!--<li>
+                            <a href="{{pathFor route='mailbox'}}">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{pathFor route='profile'}}">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{pathFor route='gridOptions'}}">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="{{pathFor route='notifications'}}">
+                                    <strong>See All Alerts</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>-->
+                    </ul>
+                </li> 
+
+
+
+
+
+
+
+                <li>
+                    <a href="#" class="active_logout">
+                        <i class="fa fa-sign-out"></i> {{translate 'logout'}}
+                    </a>
+                </li>
+
+
+                <li>
+
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" aria-expanded="false">{{translate 'lang'}} <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="choose-lang-fr">{{translate 'french'}}</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" class="choose-lang-nl">{{translate 'dutch'}}</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <!--<li>
+                    <a class="right-sidebar-toggle">
+                        <i class="fa fa-tasks"></i>
+                    </a>
+                </li>-->
+            </ul>
+
+        </nav>
+    </div>
+</template>

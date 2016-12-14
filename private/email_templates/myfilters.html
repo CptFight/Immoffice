@@ -1,0 +1,68 @@
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Des nouvelles annonce sur Immoffice</title>
+    <link href="{{host}}/emails/styles.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<table class="body-wrap">
+    <tr>
+        <td></td>
+        <td class="container" width="600">
+            <div class="content">
+                <table class="main" width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td class="alert alert-good">
+                            De nouvelles annonces sur Immoffice
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="content-wrap">
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="content-block">
+                                        Vous avez <strong>{{cpt_annonce}}</strong> nouvelles annonces correspondant à votre recherche
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="content-block">
+                                        <ul>
+                                            <li>Province : {{province}}</li>
+                                            <li>Prix minimum : {{price_min}}</li>
+                                            <li>Prix maximum : {{price_max}}</li>
+                                            <li>Code postaux : {{zip_code}}</li>
+                                            <li>Lang: {{lang}}</li>
+                                            <li>Location: {{sale}}</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table class="invoice-items" cellpadding="0" cellspacing="0">
+                                            {{#each annonces}}
+                                                <tr><td><a href="{{url}}">{{title}}</a></td></tr>
+                                                <tr><td>&nbsp;</td></tr>
+                                            {{/each}}
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <div class="footer">
+                    <table width="100%">
+                        <tr>
+                            <td class="aligncenter content-block">From <a href="{{host}}">@Immoffice</a> .</td>
+                        </tr>
+                    </table>
+                </div></div>
+        </td>
+        <td></td>
+    </tr>
+</table>
+
+</body>
+

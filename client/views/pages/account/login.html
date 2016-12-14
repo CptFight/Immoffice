@@ -1,0 +1,46 @@
+<template name="login">
+    <div class="animated fadeInDown ">
+        <div class="row">
+            <div class="col-md-5 col-lg-offset-1">
+                <h2 class="font-bold">{{translate 'welkome_immoffice'}}</h2>
+                <p>                  
+                    {{translate 'slogan'}}
+                </p>
+
+                <!-- <p>
+                    <span class="label label-danger">En Maintenance !</span>
+                </p> -->
+
+            </div>
+            <div class="col-md-5">
+        
+                    <form class="m-t" role="form" action="{{pathFor route='dashboard1'}}">
+                    
+                        <div class="form-group">
+                            <input type="email" id="login-email" class="form-control" placeholder="Email" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="login-password" class="form-control" placeholder="Mot de passe" required="">
+                        </div>
+                        {{#if is_connected}}
+                        <div class="has-error form-group">
+                            {{translate 'connection_loaded'}} : {{meteor_status}}.
+                        </div>
+                        {{else}}
+                        <button type="submit" id="button-login" class="btn btn-primary block full-width m-b" data-loading-text="Connexion en cours...">{{translate 'login'}}</button>
+                        {{/if}}
+                        <!--&nbsp; <span class="label label-warning">maintenance</span>-->
+                        <a style="color:#aeaeae" href="{{pathFor route='recoverPassword'}}">
+                            <small>{{translate 'forgot_password'}}</small>
+                        </a> 
+
+                       <!-- <p class="text-muted text-center">
+                            <small>Do not have an account?</small>
+                        </p>
+                        <a class="btn btn-sm btn-white btn-block" href="{{pathFor route='register'}}">Create an account</a> -->
+                    </form>
+                
+            </div> 
+        </div>
+    </div>
+</template>

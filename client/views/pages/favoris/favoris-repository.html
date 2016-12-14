@@ -1,0 +1,68 @@
+<template name="favorisrepository">
+
+    <!-- Page heading -->
+    {{> pageHeading }}
+
+    <div class="wrapper wrapper-content  animated fadeInRight" id="favorisrepository">
+       
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox ">
+                   
+                    <div class="ibox-content">
+
+                        <p class="m-b-lg">
+                            <span id="nestable-menu">
+                                <button type="button" id="expand_all"  class="btn btn-white" data-action="expand-all">{{translate 'expand_all'}}</button>
+                                <button type="button" id="collapse_all" class="btn btn-white" data-action="collapse-all">{{translate 'collapse_all'}}</button>
+
+                                &nbsp;  &nbsp; 
+                                <a href="#" id="load_old_favoris" class="btn btn-success pull-center"><i class="fa fa-plus"></i> {{translate 'load_old_favoris'}}</a>
+                            </span>
+                            
+
+                             <a href="#" id="new_repository" class="pull-right btn btn-white"><i class="fa fa-plus"></i> {{translate 'new_repository'}}</a>
+                             <br/>
+                        </p>
+
+                        <div class="dd" id="list-favoris">
+                            <ol class="dd-list">
+                                {{#each favoris_rep_list}}
+                                    {{#if is_favoris}}
+                                      {{> favoris}}
+                                    {{else}}
+                                      {{> repository}}
+                                    {{/if}}
+                                {{/each}}
+                            </ol>
+                        </div>
+                        
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="modal_note" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">{{translate 'your_note'}}</h4>
+              </div>
+              <div class="modal-body">
+                    <div class="summernote">
+                                           
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{translate 'cancel'}}</button>
+                <button type="button" class="btn btn-primary save-note">{{translate 'save'}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</template>

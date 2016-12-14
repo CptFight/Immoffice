@@ -1,0 +1,91 @@
+<template name="calendar">
+
+    <!-- Page heading -->
+    {{> pageHeading }}
+        <div class="wrapper wrapper-content">
+            <div class="row animated fadeInDown">
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>{{translate 'my_remembers'}}</h5>
+                            {{>iboxTools}}
+                        </div>
+                        <div class="ibox-content">
+                            <div id='external-events'>
+                                <p>{{translate 'drop_your_remember_to_activate'}}</p>
+                                {{#each new_events}}
+                                    <div class='external-event navy-bg' data-color="{{color}}" style="background-color:{{color}}" data-owner="{{name_proprio}}" data-tel="{{tel}}" data-adress="{{adress}}" data-title="{{title}}" data-path="{{url}}" data-id="{{_id}}" data-note="{{note}}">{{title}}</div>
+                                {{/each}}
+                                
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="col-lg-9">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <div id="calendar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal_calendar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{translate 'new_event'}}</h4>
+              </div>
+              <div class="modal-body">
+                 <div class="wrapper">
+
+                     <div class="row">
+                        <div class="col-sm-12">
+                            
+                            <input type="text" id="event-title" class="form-control" placeholder="{{translate 'title'}}" >
+                            <br/>
+
+                            <input type="text" id="event-name-proprio" class="form-control" placeholder="{{translate 'owner_name'}}" />
+                            <br/>
+
+                            <input type="text" id="event-adress" class="form-control" placeholder="{{translate 'adress'}}" />
+                            <br/>
+
+                            <input type="text" id="event-tel" class="form-control" placeholder="{{translate 'tel'}}" />
+                            <br/>
+
+                            <textarea id="note" class="form-control" placeholder="Note">{{translate 'your_note'}}</textarea>
+                            <br/>
+
+                            <input type="text" id="event-date" data-date-format="mm/dd/yyyy" class="form-control" placeholder="{{translate 'date'}}" />
+                            <br/>
+
+                            <div class="input-group clockpicker" data-autoclose="true">
+                                <input type="text" id="event-clock" placeholder="09:30" class="form-control" >
+                                <span class="input-group-addon">
+                                    <span class="fa fa-clock-o"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+              </div>
+              <div class="modal-footer">
+                <a target="_blank" id="annonce-link" href="#" class="btn btn-success pull-left">{{translate 'see_this_annonce'}}</a>
+                <button type="button" class="btn btn-danger delete-event">{{translate 'delete'}}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{translate 'cancel'}}</button>
+                <button type="button" class="btn btn-primary save-event">{{translate 'save'}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+
+</template>

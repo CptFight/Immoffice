@@ -1,0 +1,82 @@
+
+
+.profile-element img, .chat-message img{
+    max-height: 45px;
+    max-width: 45px;
+}
+
+section#login{
+	/*margin-top:-10px !important;*/
+	padding: 40px;
+}
+
+body {
+  padding-right: 0px !important
+}
+
+.folder-list li a.active {
+    color: #1ab394;
+}
+
+#modal_note {
+  overflow-y: auto;
+}
+
+#navbar ul li a{
+	color:#676a6c !important;
+}
+
+#pricing{
+	padding-bottom:30px;
+}
+
+#landing p{
+	font-size: 16px;
+}
+
+.landing-page h2{
+	color:#1ab394;
+}
+
+a.notification{
+	padding: 0px !important;
+	color:#888888 !important;
+}
+
+#annonces .input-group.m-b{
+	max-width: 49%;
+}
+
+.clockpicker-popover {
+    z-index: 999999;
+}
+
+
+.remember.btn-circle.btn-outline:not(.active):hover,.remember.btn-circle.btn-outline:not(.active):focus,.remember.btn-circle.btn-outline:not(.active):active {
+	background-color: #FFFFFF !important;
+    color: #f7a54a !important;
+}
+
+.remember.btn-outline.active {
+	background-color: #f7a54a;
+    color: #FFFFFF;
+}
+.remember.btn-outline.active:hover, .remember.btn-outline.active:focus, .remember.btn-outline.active:active {
+	background-color: #f7a54a !important;
+    color: #FFFFFF !important;
+}
+
+
+.favoris.btn-circle.btn-outline:not(.active):hover,.favoris.btn-circle.btn-outline:not(.active):focus,.favoris.btn-circle.btn-outline:not(.active):active {
+	background-color: #FFFFFF !important;
+    color: #ec4758 !important;
+}
+
+.favoris.btn-outline.active {
+	background-color: #ec4758;
+    color: #FFFFFF;
+}
+.favoris.btn-outline.active:hover, .favoris.btn-outline.active:focus, .favoris.btn-outline.active:active {
+	background-color: #ec4758 !important;
+    color: #FFFFFF !important;
+}

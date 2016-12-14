@@ -1,0 +1,156 @@
+<template name="navigation">
+    <nav class="navbar-default navbar-static-side" role="navigation" id="naviguation">
+        <div class="sidebar-collapse">
+
+            <!-- Close canvas menu used only on OffCanvas page -->
+            <!-- You can remove this tag if you dont use offCanvas menu -->
+            <a class="close-canvas-menu"><i class="fa fa-times"></i></a>
+            <!-- End offCanvas menu toggle -->
+
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                            {{#if profil_picture}}
+                             <img alt="image" class="img-circle" src="{{profil_picture}}" /> 
+                            
+                            <!-- {{else}}
+                            <img src="/img/logo.png" alt="image" class="img-circle" title="Logo Immoffice"/> -->
+                            {{/if}}
+                             </span>                            
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{username}}</strong>
+                             </span> <span class="text-muted text-xs block">{{translate 'my_account'}} <b class="caret"></b></span> </span> </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                           <!-- <li><a href="{{pathFor route='profile'}}">{{translate 'see_my_profil'}}</a></li> -->
+                            <li><a href="{{pathFor route='profile-edit'}}">{{translate 'edit_my_profil'}}</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" class="active_logout">{{translate 'logout'}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                      <img src="/img/logo.png" style="max-width:50px" title="Logo Immoffice"/>
+                    </div>
+                </li>
+               
+                <li class="{{isActiveRoute regex='annonces'}}">
+                    <a href="{{pathFor route='annonces'}}"><i class="fa fa-search"></i> <span class="nav-label">{{translate 'annonces'}}</span> </a>
+                </li>
+
+                <li class="{{isActiveRoute regex='myfilters'}}">
+                    <a href="{{pathFor route='myfilters'}}"><i class="fa fa-reddit"></i> <span class="nav-label">{{translate 'alert_mail'}}</span> </a>
+                </li>
+
+                <li class="{{isActiveRoute regex='favoris'}}">
+                    <a href="{{pathFor route='favoris'}}"><i class="fa fa-heart"></i> <span class="nav-label">{{translate 'favoris'}}</span>
+                    {{#if count_favoris}}
+                    &nbsp;&nbsp;<span class="label label-primary">{{count_favoris}}</span>&nbsp;
+                    {{/if}}
+                  </a>
+                </li>
+
+              <!--  <li class="{{isActiveRoute regex='favorisrepository'}}">
+                    <a href="{{pathFor route='favorisrepository'}}"><i class="fa fa-heart"></i> <span class="nav-label">{{translate 'favoris'}} 2.0 </span>
+                    {{#if count_favoris}}
+                    &nbsp;&nbsp;<span class="label label-primary">{{count_favoris_2_0}}</span>&nbsp;
+                    {{/if}}
+                  </a>
+                </li> -->
+
+                <li class="{{isActiveRoute regex='favorismanager'}}">
+                    <a href="{{pathFor route='favorismanager'}}"><i class="fa fa-heart"></i> <span class="nav-label">{{translate 'favoris'}} 2.0</span>
+                     {{#if count_favoris}}
+                    &nbsp;&nbsp;<span class="label label-primary">{{count_favoris}}</span>&nbsp;
+                    {{/if}}
+                  </a>
+                </li>
+               
+                <li class="{{isActiveRoute regex='calendar'}}">
+                    <a href="{{pathFor route='calendar'}}"><i class="fa fa-phone"></i> <span class="nav-label">{{translate 'my_remembers'}}</span>
+                    {{#if count_remember}}
+                    &nbsp;&nbsp;<span class="label label-primary">{{count_remember}}</span>
+                    {{/if}}
+                  </a>
+                </li>
+
+                {{#if is_owner}}
+                <li class="{{isActiveRoute regex='myaccounts'}}">
+                    <a href="{{pathFor route='myaccounts'}}"><i class="fa fa-user"></i> <span class="nav-label">{{translate 'my_accounts'}}</span> </a>
+                </li> 
+                {{/if}}
+
+                <li class="{{isActiveRoute regex='news'}}">
+                    <a href="{{pathFor route='news'}}"><i class="fa fa-calendar"></i> <span class="nav-label">{{translate 'news'}}</span><!-- &nbsp; <span class="label label-danger">maintenance</span>  -->
+                    </a>
+
+                </li> 
+
+                <!-- <li class="{{isActiveRoute regex='calendar'}}">
+                    <a href="{{pathFor route='calendar'}}"><i class="fa fa-calendar"></i> <span class="nav-label">Calendar</span> </a>
+                </li> -->
+
+                  <!--<li class="{{isActiveRoute regex='chat'}}">
+                    <a href="{{pathFor route='chat'}}"><i class="fa fa-wechat"></i> <span class="nav-label">Chat</span> </a>
+                </li> -->
+
+                 <li class="{{isActiveRoute regex='suggestions'}}">
+                    <a href="{{pathFor route='suggestions'}}"><i class="fa fa-at"></i> <span class="nav-label">{{translate 'suggestions'}}</span> </a>
+                </li>
+
+                {{#if is_commercial}}
+                <li class="{{isActiveRoute regex='register'}}">
+                    <a href="{{pathFor route='register'}}"><i class="fa fa-user"></i> <span class="nav-label">{{translate 'new_account'}}</span></a>
+                </li>
+                {{/if}}
+                {{#if is_admin}}
+                <li class="{{isActiveRoute regex='users'}}">
+                    <a href="{{pathFor route='users'}}"><i class="fa fa-user"></i> <span class="nav-label">{{translate 'accounts_management'}}</span></a>
+                </li>
+               
+                <li class="{{isActiveRoute regex='subscribers'}}">
+                    <a href="{{pathFor route='subscribers'}}"><i class="fa fa-user"></i> <span class="nav-label">{{translate 'subscribers'}}</span></a>
+                </li>
+                <li class="{{isActiveRoute regex='dashboard'}}">
+                    <a href="{{pathFor route='dashboard'}}"><i class="fa fa-user"></i> <span class="nav-label">{{translate 'dashboard'}}</span></a>
+                </li>
+
+                
+                {{/if}}
+                
+
+                <!-- {{#if is_admin}}
+                 <li class="{{isActiveRoute regex='users|register|dashboard'}} sub-menu">
+                    <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Administration</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse {{isActiveRoute regex='users|register|dashboard' className='in'}}">
+                        <li class="{{isActiveRoute regex='dashboard'}}"><a href="{{pathFor route='dashboard'}}">Tableau de bord</a></li>
+                        <li class="{{isActiveRoute regex='users'}}"><a href="{{pathFor route='users'}}">Gestion des comptes</a></li>
+                        <li class="{{isActiveRoute regex='register'}}"><a href="{{pathFor route='register'}}">Nouveau compte</a></li>
+                    </ul>
+                </li>
+                {{/if}} -->
+
+               
+
+                <!-- {{#if is_commercial}}
+                <li class="{{isActiveRoute regex='comptescommercial'}} sub-menu">
+                    <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Commercials</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse {{isActiveRoute regex='comptescommercial' className='in'}}">
+                        <li class="{{isActiveRoute regex='comptescommercial'}}"><a href="{{pathFor route='comptescommercial'}}">Mes comptes</a></li>
+                    </ul>
+                </li>
+                {{/if}} -->
+
+                {{#if is_gaby}}
+                <li class="{{isActiveRoute regex='cron'}}">
+                    <a href="{{pathFor route='cron'}}"><i class="fa fa-lock"></i> <span class="nav-label">{{translate 'cron'}}</span> </a>
+                </li> 
+                {{/if}}
+
+               <!--  <li class="{{isActiveRoute regex='cron'}}">
+                    <a href="{{pathFor route='cron'}}"><i class="fa"></i> <span class="nav-label">Cron</span> </a>
+                </li> -->
+                
+            </ul>
+
+        </div>
+    </nav>
+</template>

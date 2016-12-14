@@ -1,0 +1,296 @@
+<template name="users">
+
+    <!-- Page heading -->
+    {{> pageHeading }}
+
+    <div id="users" class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <h5>{{count_result}} <small>{{translate 'users_find'}}</small></h5>
+                       <!-- <small>Request time  (0.23 seconds)</small> -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="ibox">
+                                    <div class="ibox-content">
+                                        <form action="#" method="POST">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                   <input type="text" id="search-client-input" placeholder="{{translate 'key_words'}}" name="search" class="form-control">
+                                                
+                                                </div>
+                                                <div class="col-lg-2">
+                                                  <select name="commercial" id="commercial-input" class="form-control">
+                                                    <option value="all">{{translate 'all_sales'}}</option>
+                                                  {{#each commercials}}
+                                                    <option value="{{this}}">{{this}}</option>
+                                                  {{/each}}
+                                                  </select>
+                                                </div>
+
+                                                <div class="col-lg-2">
+                                                   <select name="admin" id="admin-input" class="form-control">
+                                                        <option value="all">{{translate 'all_admin'}}</option>
+                                                        <option value="yes">{{translate 'yes_admin'}}</option>
+                                                        <option value="no">{{translate 'no_admin'}}</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-lg-2">
+                                                   <select name="payed" id="payed-input" class="form-control">
+                                                        <option value="all">{{translate 'all_payed'}}</option>
+                                                        <option value="yes">{{translate 'yes_payed'}}</option>
+                                                        <option value="no">{{translate 'no_payed'}}</option>
+                                                    </select>
+                                                </div>
+
+                                                 <div class="col-lg-2">
+                                                   <select name="payed" id="sub_account-input" class="form-control">
+                                                        <option value="all">{{translate 'all_sub_account'}}</option>
+                                                        <option value="yes">{{translate 'yes_sub_account'}}</option>
+                                                        <option value="no">{{translate 'no_sub_account'}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                           
+
+                                            <div class="row">
+                                                 <div class="col-lg-12">  
+                                                        <br/>
+                                                        <button class="btn btn-primary btn-block search-client " type="submit" data-loading-text="{{translate 'loading'}}">
+                                                            {{translate 'search'}}
+                                                        </button>
+                                                    
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="ibox">  
+                                            <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="20">
+                                                <thead>
+                                                <tr>
+                                                    <th data-toggle="true">{{translate 'name'}}</th>
+                                                    <th data-hide="phone">{{translate 'agence'}}</th>
+                                                    <th data-hide="phone">{{translate 'email'}}</th>
+                                                    <th data-hide="phone">{{translate 'created_at'}}</th>
+                                                    <th data-hide="phone">{{translate 'last_connection'}}</th>
+                                                    <th data-hide="phone">{{translate 'active'}}</th>
+                                                    <th data-hide="phone" data-sort-initial="descending">{{translate 'connected'}}</th>
+                                                    
+                                                    <th class="hidden" data-hide="all">{{translate 'browser'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'visited'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'favoris'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'notes'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'last_search'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'my_filter'}} 1</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'my_filter'}} 2</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'remembers'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'email'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'firstname'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'name'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'agence'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'tel'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'adress'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'owner'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'commercial'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'service'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'amount'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'save'}}</th>
+                                                    <th class="hidden" data-hide="all">{{translate 'actions'}}</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {{#each users_list}}
+                                                    <tr>
+                                                        <td>
+                                                             {{firstname}} {{lastname}}
+                                                        </td>
+                                                        <td>
+                                                            {{agence}}
+                                                        </td>
+                                                        <td>
+                                                            {{email}}
+                                                        </td>
+                                                        <td>
+                                                            <span style="display: none">{{create_date_timestamp}}</span>{{create_date}}
+                                                        </td>
+
+
+                                                         <td class="text-center">
+                                                            <span style="display: none">{{last_login_timestamp}}</span>{{last_login}}
+                                                        </td>
+                                                        
+                                                        
+                                                        <td>
+                                                            {{#if is_lock}}
+                                                                <span class="label label-danger">{{translate 'blocked'}}</span>
+                                                            {{else}}
+                                                                <span class="label label-primary">{{translate 'active'}}</span>
+                                                            {{/if}}
+                                                        </td>
+                                                        <td>
+                                                            {{#if is_connected}}
+                                                                <span class="label label-info">{{translate 'connected'}}</span>
+                                                            {{/if}}
+                                                        </td>
+
+                                                        <td class="text-center hidden">
+                                                            {{last_browser}}
+                                                        </td>
+
+                                                        <td class="text-center hidden">
+                                                            {{nbr_visited}}
+                                                        </td>
+                                                        <td class="text-center hidden">
+                                                            {{nbr_favoris}}
+                                                        </td>
+                                                         <td class="text-center hidden">
+                                                            {{nbr_notes}}
+                                                            
+                                                        </td>
+                                                        <td class="hidden">
+                                                            {{last_search}}
+                                                        </td>
+                                                        <td class="hidden">
+                                                            {{my_filter_1}}
+                                                        </td>
+                                                        <td class="hidden">
+                                                            {{my_filter_2}}
+                                                            
+                                                        </td>
+                                                        <td class="hidden">
+                                                            {{remembers_count}}
+                                                            
+                                                        </td>
+                                                       
+                                                        <!-- <td class="hidden">
+                                                            {{#if picture}}
+                                                                <img alt="image" class="img-circle" src="{{picture}}"
+                                                                     style="width: 62px">
+                                                            {{/if}}
+                                                        </td> -->
+                                                        <td class="hidden">
+                                                            <hr/>
+                                                            <input class="form-control" type="text" name="login" value="{{email}}" placeholder="Login" />
+                                                        </td>
+                                                        <td class="hidden">
+                                                            <input class="form-control" type="text" name="firstname" value="{{firstname}}" placeholder="Prénom" />
+                                                        </td>
+                                                        <td class="hidden">
+                                                            <input class="form-control" type="text" name="lastname" value="{{lastname}}" placeholder="Nom" />
+                                                        </td>
+                                                        <td class="hidden">
+                                                            <input class="form-control" type="text" name="agence" value="{{agence}}" placeholder="Agence" />
+                                                        </td>
+                                                        <td class="hidden">
+                                                            <input class="form-control" type="text" name="tel" value="{{tel}}" placeholder="{{translate 'tel'}}" />
+                                                        </td>
+                                                        <td class="hidden">
+                                                            <input class="form-control" type="text" name="adress" value="{{adress}}" placeholder="Adresse" />
+                                                        </td>
+                                                        <td class="hidden">
+                                                            <input class="form-control" type="text" name="owner_email" value="{{owner_email}}" placeholder="{{translate 'ownser'}}" />
+                                                        </td>
+                                                        <td class="hidden">
+                                                            <input class="form-control" type="text" name="commercial" value="{{commercial}}" placeholder="{{translate 'sale'}}" />
+                                                        </td>
+                                                        <td class="hidden">
+                                                            <select name="service" class="form-control m-b">
+                                                                <option {{isserviceselected "standart"}} value="standart">Standart</option>
+                                                                <option {{isserviceselected "mail"}} value="mail">Mail</option>
+                                                                <option {{isserviceselected "other"}} value="other">Autres</option>
+                                                            </select>
+                                                        </td>
+                                                        <td class="hidden">
+                                                            <div class="input-group">
+                                                                <input type="number" id="contract_amount" name="contract_amount" placeholder="79" class="form-control" value="{{contract_amount}}" required> 
+                                                                <span class="input-group-addon">{{translate 'currency'}}</span>
+                                                            </div>  
+                                                            <hr/>
+                                                        </td>
+                                                        <td class="hidden">
+                                                            <button data-id="{{_id}}" class="btn btn-primary btn-sm btn-block save-profile-edit"><i
+                                                            class="fa fa-save"></i> {{translate 'save'}}
+                                                             </button>
+                                                        </td>
+                                                        <td class="hidden">
+                                                             <a type="button" data-id="{{_id}}" href="mailto:{{email}}" class="btn btn-primary btn-sm btn-block"><i
+                                                                    class="fa fa-envelope"></i> {{translate 'send_email'}}
+                                                            </a>
+                                                             <hr/>
+                                                             <a type="button" data-email="{{email}}" href="#" class="btn btn-primary btn-sm btn-block new-password"><i
+                                                                class="fa fa-envelope"></i> {{translate 'send_new_password'}}
+                                                            </a>
+
+                                                            <hr/>
+
+                                                            <a type="button" data-id="{{_id}}" class="btn btn-primary btn-sm btn-block reset-user"><i class="fa fa-eraser"></i> {{translate 'reset_account'}}
+                                                            </a>
+
+                                                            <hr/>
+
+                                                            {{#if is_lock}}
+                                                             <a type="button" data-id="{{_id}}" class="btn btn-primary btn-sm btn-block unlock-user"><i
+                                                                    class="fa fa-unlock-alt"></i> {{translate 'activate'}}
+                                                            </a>
+                                                            {{else}}
+                                                            <a type="button" data-id="{{_id}}" class="btn btn-danger btn-sm btn-block lock-user"><i
+                                                                    class="fa fa-lock"></i> {{translate 'block'}}
+                                                            </a>
+                                                           
+                                                            {{/if}}
+                                                             <hr/>
+                                                            {{#if is_admin}}
+                                                            <a type="button" data-id="{{_id}}" class="btn btn-danger btn-sm btn-block set-admin-false"><i
+                                                                    class="fa fa-lock"></i> {{translate 'put_not_admin'}}
+                                                            </a>
+                                                            {{else}}
+                                                            <a type="button" data-id="{{_id}}" class="btn btn-primary btn-sm btn-block set-admin-true"><i
+                                                                    class="fa fa-unlock-alt"></i> {{translate 'put_admin'}}
+                                                            </a>
+                                                            {{/if}}
+                                                             <hr/>
+                                                            {{#if is_commercial}}
+                                                            <a type="button" data-id="{{_id}}" class="btn btn-danger btn-sm btn-block set-commercial-false"><i
+                                                                    class="fa fa-lock"></i> {{translate 'put_not_sale'}}
+                                                            </a>
+                                                            {{else}}
+                                                            <a type="button" data-id="{{_id}}" class="btn btn-primary btn-sm btn-block set-commercial-true"><i
+                                                                    class="fa fa-unlock-alt"></i> {{translate 'put_sale'}}
+                                                            </a>
+                                                            {{/if}}
+                                                            <hr/>
+                                                            <a type="button" data-id="{{_id}}" class="btn btn-danger btn-sm btn-block delete-client" onclick="return(confirm({{translate 'sure_delete_account'}}));"><i
+                                                                 class="fa fa-database"></i> {{translate 'delete_account'}}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                {{/each}}
+
+                                                </tbody>
+
+                                                <tfoot>
+                                                <tr>
+                                                    <td colspan="6">
+                                                        <ul class="pagination pull-right"></ul>
+                                                    </td>
+                                                </tr>
+                                                </tfoot>
+                                              
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

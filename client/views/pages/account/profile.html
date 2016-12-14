@@ -1,0 +1,35 @@
+<template name="profile">
+
+    <!-- Page heading -->
+    {{> pageHeading}}
+
+    <div class="wrapper wrapper-content">
+        <div class="row animated fadeInRight">
+            <div class="col-md-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>{{translate 'profil_detail'}}</h5>
+                    </div>
+                    <div>
+                        <div class="ibox-content no-padding center border-left-right">
+                            <img alt="image" class="img-responsive" src="{{profil_picture}}">
+                        </div>
+                        <div class="ibox-content profile-content">
+                            <h4><strong>{{username}}</strong></h4>
+                            <p>{{translate 'agence'}} : {{agence}}</p>
+                            <p><i class="fa fa-map-marker"></i> {{address}}</p>
+                            <h5>
+                               {{translate 'informations'}} :
+                            </h5>
+                            <ul>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+            </div>
+        </div>
+    </div>
+</template>

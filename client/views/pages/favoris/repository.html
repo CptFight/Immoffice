@@ -1,0 +1,34 @@
+<template name="repository">
+
+   <li class="dd-item repository" data-id="{{id}}" data-color="{{color}}" data-name="{{name}}" data-type="repository">
+        <div class="dd-handle">
+            <span class="label label-primary" id="icon-{{id}}" style="background-color:{{color}}"><i class="fa fa-users"></i></span> {{name}}
+
+            <span class="pull-right dd-nodrag hidden more_infos_up_container"> <a title="{{translate 'more_infos'}}" href="#" class="label label-success more_infos_up" data-detail-id="detail-{{id}}"><i class="fa fa-toggle-down"></i> {{translate 'more_infos_up'}}</a> </span>
+
+            <span class=" pull-right dd-nodrag more_infos_down_container"> <a title="{{translate 'more_infos'}}" href="#" class="label label-success more_infos_down" data-detail-id="detail-{{id}}"><i class="fa fa-toggle-down"></i> {{translate 'more_infos_down'}}</a> </span>
+
+            <span class="pull-right dd-nodrag export" data-id="{{id}}"> <a title="{{translate 'export'}}" href="#" class="label label-infos export" data-id="{{id}}"><i class="fa fa-download" data-id="{{id}}"></i> {{translate 'export'}}</a>&nbsp; </span> 
+        </div>
+
+        <div class="hidden dd-nodrag more_infos" id="detail-{{id}}">
+            {{> repositorydetail}}
+        </div>
+
+         <ol class="dd-list">
+
+            {{#each childrens_favoris}}
+                {{> favoris}}
+            {{/each}}
+
+
+            {{#each childrens_repository}}
+                {{> repository}}
+            {{/each}}
+
+        </ol>
+       
+    </li>
+
+
+</template>

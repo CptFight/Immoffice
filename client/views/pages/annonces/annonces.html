@@ -1,0 +1,364 @@
+<template name="annonces">
+
+    <!-- Page heading -->
+    {{> pageHeading }}
+
+    <div id="annonces" class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <h2>
+                             <span class="text-navy"></span>
+                        </h2>
+                       <!-- <small>Request time  (0.23 seconds)</small> -->
+
+                       <div class="ibox float-e-margins">
+                            <form action="#" method="post">
+                                <div class="ibox-title">
+                                <h5>{{annonces_list_count}} <small>{{translate 'annonces_find'}} {{annonces_list_count_max}}</small></h5>
+
+                                
+                                <div class="html5buttons pull-right">
+                                    <div class="dt-buttons btn-group">
+                                       <!--  <span class="btn "><i class="fa fa-download"></i>&nbsp;
+                                        </span> -->
+                                      <!--  <a class="btn btn-white export-copy"><span>Copy</span></a> -->
+                                     <!-- <a class="btn btn-white export-csv"><span>CSV</span></a> -->
+                                        <a class="btn btn-white export"><span>{{translate 'export'}}</span></a>
+                                      <!--  <a class="btn btn-white export-xls"><span>Excel</span></a> -->
+                                    <!--    <a class="btn btn-white export-print"><span>Print</span></a> -->
+                                       
+                                    </div>
+                                </div>
+                               <!-- {{>iboxTools}} -->
+                                </div>
+                                <div class="ibox-content">
+
+                                    <div class="row">
+
+                                        <div class="col-lg-6">
+                                            <div id="reportrange" class="form-group form-control">
+                                                <i class="fa fa-calendar"></i>
+                                                <span></span> <b class="caret"></b>
+                                                <input type="hidden" id="date-min" value="" />
+                                                <input type="hidden" id="date-max" value="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            {{#if is_phone}}
+                                            <select id="province" class="form-control" >
+                                                <option value="">{{translate 'choose_province'}}</option>
+                                                <option value="Anvers">{{translate 'anvers'}}</option>
+                                                <option value="Limbourg">{{translate 'limbourg'}}</option>
+                                                <option value="Bruxelles">{{translate 'bruxelles'}}</option>
+                                                <option value="Flandre orientale">{{translate 'flandre_orientale'}}</option>
+                                                <option value="Brabant flamand">{{translate 'brabant_flamand'}}</option>
+                                                <option value="Flandre occidentale">{{translate 'flandre_occidentale'}}</option>
+                                                <option value="Brabant wallon">{{translate 'brabant_wallon'}}</option>
+                                                <option value="Hainaut">{{translate 'hainaut'}}</option>
+                                                <option value="Liège">{{translate 'liege'}}</option>
+                                                <option value="Luxembourg">{{translate 'luxembourg'}}</option>
+                                                <option value="Namur">{{translate 'namur'}}</option>
+                                            </select>
+                                            {{else}}
+                                            <select data-placeholder="{{translate 'choose_province'}}" id="province" class="chosen-select form-control" multiple tabindex="4">
+                                                <option value="Anvers">{{translate 'anvers'}}</option>
+                                                <option value="Limbourg">{{translate 'limbourg'}}</option>
+                                                <option value="Bruxelles">{{translate 'bruxelles'}}</option>
+                                                <option value="Flandre orientale">{{translate 'flandre_orientale'}}</option>
+                                                <option value="Brabant flamand">{{translate 'brabant_flamand'}}</option>
+                                                <option value="Flandre occidentale">{{translate 'flandre_occidentale'}}</option>
+                                                <option value="Brabant wallon">{{translate 'brabant_wallon'}}</option>
+                                                <option value="Hainaut">{{translate 'hainaut'}}</option>
+                                                <option value="Liège">{{translate 'liege'}}</option>
+                                                <option value="Luxembourg">{{translate 'luxembourg'}}</option>
+                                                <option value="Namur">{{translate 'namur'}}</option>
+                                            </select>
+
+                                            {{/if}}
+                                        </div> 
+
+                                        
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            {{#if is_phone}}
+
+                                                <div class="form-group">
+                                                   <div class="input-group">
+                                                        <input type="number" id="price-min" min="0" step="10000" placeholder="{{translate 'min_price'}}" class="form-control"> 
+                                                        <span class="input-group-addon">{{translate 'currency'}}</span>
+                                                    </div>
+                                                   <div class="input-group">
+                                                        <input type="number" id="price-max" min="0" step="10000" placeholder="{{translate 'max_price'}}" class="form-control"> 
+                                                        <span class="input-group-addon">{{translate 'currency'}}</span>
+                                                    </div>
+                                                </div>
+
+                                            {{else}}
+
+                                                <div class="form-inline">
+                                                   <div class="input-group m-b">
+                                                        <input type="number" id="price-min" min="0" step="10000" placeholder="{{translate 'min_price'}}" class="form-control"> 
+                                                        <span class="input-group-addon">{{translate 'currency'}}</span>
+                                                    </div>
+                                                   <div class="input-group m-b pull-right">
+                                                        <input type="number" id="price-max" min="0" step="10000" placeholder="{{translate 'max_price'}}" class="form-control"> 
+                                                        <span class="input-group-addon">{{translate 'currency'}}</span>
+                                                    </div>
+                                                </div>
+
+                                            {{/if}}
+                                            
+
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            
+                                            <div class="input-group">
+                                                <input type="text" id="input-zipcode" placeholder="{{translate 'zip_code_placeholder'}}" name="zipcodes" class="form-control">
+                                                <span class="input-group-btn"> 
+                                                    <a href="{{pathFor route='map'}}" class="btn btn-white map-link"><i class="fa fa-map-marker"></i> {{translate 'map'}}
+                                                    </a> 
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                           <input type="text" id="input-search" placeholder="{{translate 'key_words'}}" name="search" class="form-control">
+                                        </div>
+
+                                         <div class="col-lg-6">      
+                                            <label class="radio-inline"> 
+                                                <input type="radio" value="all" name="lang" >{{translate 'FR/NL'}}
+                                            </label> 
+                                            <label class="radio-inline">
+                                                <input type="radio" value="fr" name="lang" >{{translate 'FR'}}
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" value="nl" name="lang" >{{translate 'NL'}}
+                                            </label>
+
+                                           
+                                            <label class="radio-inline pull-right">
+                                                <input type="radio" value="location" name="sell_location" >{{translate 'location'}}
+                                            </label>
+                                              <label class="radio-inline pull-right">
+                                                <input type="radio" value="sell" checked name="sell_location" >{{translate 'sell'}}
+                                            </label>
+
+                                            
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                         <div class="col-lg-12">  
+                                                <br/>
+                                                <button class="btn btn-primary btn-block search-button " type="submit" data-loading-text="{{translate 'loading'}}">
+                                                    {{translate 'search'}}
+                                                </button>
+                                                <p >{{translate 'refresh_page_if_zone_is_up'}}</p>
+                                        </div>
+                                    </div>
+
+                                  
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="ibox">
+                                    <div class="ibox-content">
+                                        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="50"
+
+        >
+                                            <thead>
+                                            <tr>
+                                                <th data-toggle="true">{{translate 'title'}}</th>
+                                                <th data-hide="phone">{{translate 'zip_code'}}</th>
+                                                <th data-hide="phone" data-type="numeric" class="text-right">{{translate 'price'}}</th>
+                                                <th>{{translate 'web_site'}}</th>
+                                                <th data-hide="phone" >{{translate 'date'}}</th>
+                                                <th data-hide="phone">{{translate 'visited'}}</th>
+                                                <th class="hidden no-export" data-hide="all">{{translate 'id'}}</th>
+                                                <th class="hidden no-export" data-hide="all">{{translate 'price'}}</th>
+                                                <th class="hidden no-export" data-hide="all">{{translate 'publications'}}</th>
+                                                
+                                                <th class="hidden" data-hide="all">{{translate 'adress'}}</th>
+                                                <th class="hidden" data-hide="all">{{translate 'province'}}</th>
+                                                <th class="hidden no-export" data-hide="all">{{translate 'city'}}</th>
+                                                <th class="hidden no-export" data-hide="all">{{translate 'living_space'}}</th>
+                                                <th class="hidden no-export" data-hide="all">{{translate 'chambers'}}</th>
+                                                <th class="hidden" data-hide="all">{{translate 'description'}}</th>
+                                                <th class="hidden" data-hide="all">{{translate 'link'}}</th>
+                                                <th class="hidden no-export" data-hide="all"></th>
+                                                <th class="text-center no-export" data-sort-ignore="true">{{translate 'actions'}}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {{#each annonces_list}}
+                                                <tr data-key="{{key}}" data-id="{{_id}}">
+                                                    <td>
+                                                        {{title}}
+                                                    </td>
+                                                    <td class="text-center">
+                                                        {{zip_code}}
+                                                    </td>
+                                                    <td class="text-right">
+                                                        {{#if price}}
+                                                            {{price}} €
+                                                        {{else}}
+                                                            A discuter
+                                                        {{/if}}
+                                                    </td>
+                                                    <td>
+                                                        {{website}}
+                                                    </td>
+                                                    <td>
+                                                        {{date}}
+                                                    </td>
+                                                    <td class="text-center">    
+                                                        {{#if is_visited}}
+                                                        <a href="#" data-id="{{_id}}" class="btn btn-circle set-dont-see-it"><i class="fa fa-check text-navy"></i><span style="display:none;">Yes</span></a>
+                                                        {{else}}
+                                                        <a href="#" data-id="{{_id}}" class="btn btn-circle set-see-it" ><i class="fa fa-square-o"></i><span style="display:none;">No</span></a>
+                                                        {{/if}}
+                                                    </td>
+                                                    <td class="hidden no-export">
+                                                        {{_id}}
+                                                    </td>
+                                                    <td class="hidden no-export">
+                                                        <del>{{old_prices}}</del> 
+                                                         {{#if price}}
+                                                            {{price}} €
+                                                        {{else}}
+                                                            A discuter
+                                                        {{/if}}
+                                                    </td>
+                                                     <td class="hidden no-export">
+                                                        <del>{{old_dates_formated}}</del> {{date}}
+                                                    </td>
+                                                     
+                                                    <td class="hidden">
+                                                        {{location}}
+                                                    </td>
+                                                    <td class="hidden">
+                                                        {{province}}
+                                                    </td>
+                                                    <td class="hidden no-export">
+                                                        {{city}}
+                                                    </td>
+                                                    <td class="hidden no-export">
+                                                        {{living_space}} m<sup>2</sup>
+                                                    </td>
+                                                    <td class="hidden no-export">
+                                                        {{bedrooms}}
+                                                    </td>
+                                                    <td class="hidden">
+                                                        {{description}}
+                                                    </td>
+                                                    <td class="hidden ">
+                                                        <br/>
+                                                        <span class="hidden">{{url}}</span>
+                                                    </td>
+                                                    <td class="hidden no-export">
+                                                        <br/>
+                                                        <a target="_blank" href="{{url}}" data-id="{{_id}}" class="link_website btn btn-w-m btn-success"><i class="fa fa-external-link"></i> {{translate 'see_this_annonce'}}</a>
+                                                    </td>
+                                                   
+                                                    <td class="text-right no-export">
+
+                                                           <a title="{{translate 'go_to_the_annonce'}}" target="_blank" href="{{url}}" class="btn btn-success btn-circle link_website"><i class="fa fa-external-link"></i></a>
+
+                                                            <a title="{{translate 'add_to_favoris'}}" data-id="{{_id}}" href="#" data-key="{{key}}" class="btn btn-danger favoris btn-circle btn-outline {{#if is_favoris_active}}active{{/if}}" type="button"><i class="fa fa-heart"></i>
+                                                            </a>
+
+                                                            <a title="{{date_remember}}" data-id="{{_id}}" href="#" data-key="{{key}}" class="btn btn-warning remember btn-circle  btn-outline {{#if is_remember_active}}active{{/if}}" type="button"><i class="fa fa-phone"></i>
+                                                            </a>
+
+
+                                                            <a title="{{translate 'add_a_note'}}" target="_blank" href="#" data-target="#modal_note" class="btn btn-primary btn-circle note"><i class="fa {{#if is_note_exist}}fa-edit{{else}}fa-align-left{{/if}}"></i></a>
+
+
+                                                            
+                                                            {{#if is_admin}}
+                                                             <a title="{{translate 'delete_the_annonce'}}" data-id="{{_id}}" href="#" class="btn btn-danger btn-circle delete-annonce" ><i class="fa fa-times"></i></a>
+                                                            {{/if}}
+                                                    </td>
+                                                </tr>
+                                            {{/each}}
+
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <td colspan="6">
+                                                     {{number_max_annonce_printed}} {{translate 'annonces_printed'}}<ul class="pagination pull-right"></ul>
+                                                </td>
+                                            </tr>
+                                            </tfoot>
+                                        </table>
+
+                                        {{#if is_more_annonces}}
+                                            
+                                                <a class="btn btn-primary btn-rounded incr-max-number btn-block" data-loading-text="{{translate 'loading'}}" href="#"><i class="fa fa-cloud-download"></i> {{translate 'load_more_annonces'}}</a>
+                                        {{/if}} 
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+<div class="modal fade" id="modal_note" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{translate 'your_note'}}</h4>
+      </div>
+      <div class="modal-body">
+            <div class="summernote">
+                                   
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{translate 'cancel'}}</button>
+        <button type="button" class="btn btn-primary save-note">{{translate 'save'}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!--
+   <div class="modal inmodal" id="modal_note">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" class="form-horizontal profil" enctype="multipart/form-data">                
+                    <div class="modal-body">
+                            <div class="form-group">
+                                
+                            </div>  
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary save-note">Save notes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+-->
+    </div>
+</template>

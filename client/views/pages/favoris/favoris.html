@@ -1,0 +1,36 @@
+<template name="favoris">
+
+<li class="dd-item" id="favoris-{{_id}}" data-id="{{_id}}" data-type="annonce" >
+    <div class="dd-handle">
+        <span class="label">{{date}}</span> 
+        <span class="label">{{zip_code}}</span> 
+        <span class="label">{{price}}€</span> 
+        <!--<span class="label">{{website}}</span>  -->
+        {{title}}
+       
+        <span class=" pull-right dd-nodrag hidden more_infos_up_container"> <a title="{{translate 'more_infos'}}" href="#" class="label label-success more_infos_up" data-detail-id="detail-{{_id}}"><i class="fa fa-toggle-down"></i> {{translate 'more_infos_up'}}</a> </span>
+
+        <span class=" pull-right dd-nodrag more_infos_down_container"> <a title="{{translate 'more_infos'}}" href="#" class="label label-success more_infos_down" data-detail-id="detail-{{_id}}"><i class="fa fa-toggle-down"></i> {{translate 'more_infos_down'}}</a> </span>
+
+    </div>
+
+    <div class="hidden dd-nodrag more_infos" id="detail-{{_id}}">
+        {{> favorisdetail}}
+    </div>
+
+     <ol class="dd-list">
+
+        {{#each childrens_favoris}}
+            {{> favoris}}
+        {{/each}}
+
+
+        {{#each childrens_repository}}
+            {{> repository}}
+        {{/each}}
+
+    </ol>
+
+    
+</li>
+</template>

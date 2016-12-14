@@ -1,0 +1,16 @@
+{
+	"public": {
+		"cdn" : {
+			"save_path" : "http://188.166.9.165/cdn/save.php",
+			"get_path" : "http://188.166.9.165/cdn/get.php?id="
+		},
+		"annonces" : {
+			"get_path" : "http://188.166.9.165/annonces-import/get.php",
+			"import_path" : "http://localhost/annonces-import/import.php?max_date="
+		},
+		"general": {
+			"host" : "http://localhost:3000"
+		}
+	}
+	
+}

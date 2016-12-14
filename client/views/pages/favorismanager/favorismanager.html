@@ -1,0 +1,179 @@
+<template name="favorismanager">
+
+    <!-- Page heading -->
+    {{> pageHeading  }}
+
+    <div class="wrapper wrapper-content" id="favorismanager">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="file-manager">
+                            <h5>{{translate 'folders'}}</h5>
+                            <ul class="folder-list" style="padding: 0">
+                                <li><span><a href="#" class="repository  {{#if is_repo_active}}active{{/if}}" data-id="false"><i class="fa fa-folder"></i> {{translate 'no_order'}}</a> </span>
+                                
+                                </li>
+                                {{#each favoris_rep_list}}
+                                    {{#if is_favoris}}
+                                    {{else}}
+                                        <li ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                                        
+                               <span class="pull-right"> <a href="#" class="repository-edit" data-id="{{id}}"><i class="fa fa-edit"></i></a></span>
+
+                               <span class=""><a href="#" class="repository {{#if is_repo_active}}active{{/if}}" data-id="{{id}}"><i class="fa fa-folder "></i> {{name}}</a></span>
+
+
+                                        </li>
+                                    {{/if}}
+                                {{/each}}
+                                
+                            </ul>
+
+                             <a href="#" id="new_repository" class="btn btn-white"><i class="fa fa-plus"></i> {{translate 'new_repository'}}</a>
+                             <br/>
+                           
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 animated fadeInRight">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content ">
+                         <a class="btn btn-white new" href="{{pathFor route='newfavoris'}}"><span>{{translate 'new'}}</span></a>
+                    {{#if repository_edit_active}}
+                        {{#each repository_edit_active}}
+                         {{> repositorydetail}}
+                        {{/each}}
+                    {{else}}
+
+                    {{#if detail_active}}
+                        {{#each detail_active}}
+                         {{> favorisdetail}}
+                        {{/each}}
+                    {{else}}
+
+                       <div class="html5buttons pull-right">
+                            <div class="dt-buttons btn-group">
+                                <!--<a class="btn btn-white" href="{{pathFor route='favorisrepository'}}" ><span>{{translate 'old_interface'}}</span></a> -->
+                                <a class="btn btn-white exportthis"><span>{{translate 'export'}}</span></a>
+                            </div>
+                        </div>
+
+                        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="20">
+                            <thead>
+                            <tr>
+                                <th data-toggle="true">{{translate 'title'}}</th>
+                                <th data-hide="phone">{{translate 'zip_code'}}</th>
+                                <th data-hide="phone" data-type="numeric" class="text-right">{{translate 'price'}}</th>
+                                <th data-hide="phone"  data-type="numeric">{{translate 'date'}}</th>
+                                <th data-hide="phone">{{translate 'visited'}}</th>
+                                <th class="hidden" data-hide="all">{{translate 'id'}}</th>
+                                <th class="hidden" data-hide="all">{{translate 'price'}}</th>
+                                <th class="hidden" data-hide="all">{{translate 'publications'}}</th>
+                                <th class="hidden" data-hide="all">{{translate 'web_site'}}</th>
+                                <th class="hidden" data-hide="all">{{translate 'adress'}}</th>
+                                <th class="hidden" data-hide="all">{{translate 'province'}}</th>
+                                <th class="hidden" data-hide="all">{{translate 'city'}}</th>
+                                <th class="hidden" data-hide="all">{{translate 'living_space'}}</th>
+                                <th class="hidden" data-hide="all">{{translate 'chambers'}}</th>
+                                <th class="hidden" data-hide="all">{{translate 'description'}}</th>
+                                <th class="hidden" data-hide="all"></th>
+                                <th class="text-center" data-sort-ignore="true">{{translate 'actions'}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each annonces_list}}
+                                 <tr data-key="{{key}}" data-id="{{_id}}" draggable="true" ondragstart="drag(event)">
+                                        <td>
+                                            {{title}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{zip_code}}
+                                        </td>
+                                        <td class="text-right">
+                                            {{#if price}}
+                                                {{price}} €
+                                            {{else}}
+                                                A discuter
+                                            {{/if}}
+                                            
+                                        </td>
+                                        <td data-value="{{date_timestamp}}">
+                                            {{date}}
+                                        </td>
+                                        <td class="text-center">    
+                                            {{#if is_visited}}
+                                            <a href="#" data-id="{{_id}}" class="btn btn-circle set-dont-see-it"><i class="fa fa-check text-navy"></i><span style="display:none;">Yes</span></a>
+                                            {{else}}
+                                            <a href="#" data-id="{{_id}}" class="btn btn-circle set-see-it" ><i class="fa fa-square-o"></i><span style="display:none;">No</span></a>
+                                            {{/if}}
+                                        </td>
+                                        <td class="hidden">
+                                            {{_id}}
+                                        </td>
+                                        <td class="hidden">
+                                            <del>{{old_prices}}</del> 
+                                             {{#if price}}
+                                                {{price}} €
+                                            {{else}}
+                                                A discuter
+                                            {{/if}}
+                                        </td>
+                                         <td class="hidden">
+                                            <del>{{old_dates_formated}}</del> {{date}}
+                                        </td>
+                                         <td class="hidden">
+                                            {{website}}
+                                        </td>
+                                        <td class="hidden">
+                                            {{location}}
+                                        </td>
+                                        <td class="hidden">
+                                            {{province}}
+                                        </td>
+                                        <td class="hidden">
+                                            {{city}}
+                                        </td>
+                                        <td class="hidden">
+                                            {{living_space}} m<sup>2</sup>
+                                        </td>
+                                        <td class="hidden">
+                                            {{bedrooms}}
+                                        </td>
+                                        <td class="hidden">
+                                            {{description}}
+                                        </td>
+                                        <td class="hidden">
+                                            <br/>
+                                            <a target="_blank" href="{{url}}" data-id="{{_id}}" class="link_website btn btn-w-m btn-success"><i class="fa fa-external-link"></i> {{translate 'see_this_annonce'}}</a>
+                                        </td>
+                                       
+                                        <td class="text-right">
+
+                                                <a title="{{translate 'detail'}}" data-id="{{_id}}" href="#" class="btn btn-success btn-circle favoris_detail"><i class="fa fa-search"></i></a>
+                                               
+                                        </td>
+                                    </tr>
+                            {{/each}}
+
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <ul class="pagination pull-right"></ul>
+                                </td>
+                            </tr>
+                            </tfoot>
+                        </table>
+
+                    {{/if}}
+                    {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

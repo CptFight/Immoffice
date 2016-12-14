@@ -1,0 +1,126 @@
+<template name="subscribers">
+
+    <!-- Page heading -->
+    {{> pageHeading title='subscribers' }}
+
+    <div id="subscribers" class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <h5>{{count_result}} <small>{{translate 'users'}}</small></h5>
+                       <!-- <small>Request time  (0.23 seconds)</small> -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="ibox">
+                                    <div class="ibox-content">
+                                        <div class="col-lg-6">
+                                            <form action="#" method="POST">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                       <input type="text" id="search-subscribersinput" placeholder="{{translate 'email'}}" name="search" class="form-control">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                      <select name="province" id="province-input" class="form-control">
+                                                        <option value="all">{{translate 'all_provinces'}}</option>
+                                                      {{#each provinces}}
+                                                        <option value="{{this}}">{{this}}</option>
+                                                      {{/each}}
+                                                      </select>
+                                                    </div>
+                                                </div>
+                                               
+                                                <div class="row">
+                                                    <div class="col-lg-12">  
+                                                        <br/>
+                                                        <button class="btn btn-primary btn-block search-suscribers" type="submit" data-loading-text="{{translate 'loading'}}">
+                                                            {{translate 'search'}}
+                                                        </button>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <form action="#" method="POST">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                       <input type="text" id="add-subscriber-input" placeholder="{{translate 'email'}}" name="search" class="form-control" required>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                      <select name="province" id="select-province-input" class="form-control">
+                                                      {{#each provinces}}
+                                                        <option value="{{this}}">{{this}}</option>
+                                                      {{/each}}
+                                                      </select>
+                                                    </div>
+                                                </div>
+                                               
+                                                <div class="row">
+                                                    <div class="col-lg-12">  
+                                                        <br/>
+                                                        <button class="btn btn-primary btn-block add-subscriber" type="submit" data-loading-text="{{translate 'loading'}}">
+                                                            {{translate 'add'}}
+                                                        </button>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="ibox">  
+                                            <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="20">
+                                                <thead>
+                                                <tr>
+                                                    <th >{{translate 'email'}}</th>
+                                                    <th >{{translate 'province'}}</th>
+                                                    <th >{{translate 'created_at'}}</th>
+                                                    <th >{{translate 'actions'}}</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {{#each subscribers_list}}
+                                                    <tr>
+                                                        <td>
+                                                             {{email}}
+                                                        </td>
+                                                        <td>
+                                                            {{province}}
+                                                        </td>
+                                                        <td>
+                                                            {{create_date}}
+                                                        </td>
+                                                        <td>
+                                                            <a type="button" data-id="{{_id}}" class="btn btn-danger btn-sm delete-suscriber"><i
+                                                                 class="fa fa-database"></i> {{translate 'delete'}}
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                {{/each}}
+
+                                                </tbody>
+
+                                                <tfoot>
+                                                <tr>
+                                                    <td colspan="6">
+                                                        <ul class="pagination pull-right"></ul>
+                                                    </td>
+                                                </tr>
+                                                </tfoot>
+                                              
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
